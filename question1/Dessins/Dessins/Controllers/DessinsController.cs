@@ -17,5 +17,25 @@ namespace Dessins.Controllers
         }
 
         // TODO: Il faut ajouter une nouvelle action pour dessiner la séquence mentionnée dans l'énoncé
+        [HttpGet]
+        public ActionResult GetDrawing2()
+        {
+            var drawCircle = new DrawCircle(1, 1);
+            var wait1 = new Wait(3);
+            var drawSquare1 = new DrawSquare(0, 2);
+            var drawSquare2 = new DrawSquare(2, 2);
+            var wait2 = new Wait(1);
+            var drawStar = new DrawStar(1, 3, 20);
+
+            drawCircle.DrawingEvents = [];
+            drawCircle.DrawingEvents.Add(wait1);
+            drawCircle.DrawingEvents.Add(drawSquare1);
+            drawCircle.DrawingEvents.Add(drawSquare2);
+            drawCircle.DrawingEvents.Add(wait2);
+            drawCircle.DrawingEvents.Add(drawStar);
+            
+
+            return Ok(drawCircle);
+        }
     }
 }
